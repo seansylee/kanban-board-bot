@@ -1,0 +1,46 @@
+{
+  "all": {
+    "command": "$kanban [-A]",
+    "description": "display the entire board"
+  },
+  "backlog": {
+    "command": "$kanban -B",
+    "description": "display the Backlog tasks"
+  },
+  "inprogress": {
+    "command": "$kanban -I",
+    "description": "display the In-Progress tasks"
+  },
+  "completed": {
+    "command": "$kanban -C",
+    "description": "display the Completed tasks"
+  },
+	"add": {
+		"command": "$kanban add <Task>",
+		"description": "default, adding a task to bottom row of \"Backlog\""
+	},
+	"delete": {
+		"command": "$kanban delete <Task>",
+		"description": "delete selected tasks"
+	},
+	"edit": {
+		"command": "$kanban edit <Task> <New Task>",
+		"description": "replace selected task with a new task"
+	},
+	"forward": {
+		"command": "$kanban forward <Task>",
+		"description": "shift selected task forward, for example, from \"Backlog\" to \"In-Progress\""
+	},
+	"backward": {
+		"command": "$kanban backward <Task>",
+		"description": "shift selected task backward, for example, from \"In-Progress\" to \"Backlog\""
+	},
+	"up": {
+		"command": "$kanban up <Task>",
+		"description": "sup gurl u up?"
+	},
+	"down": {
+		"command": "$kanban down <Task>",
+		"description": "shifting down an task (default shifts down by one)"
+	}
+}

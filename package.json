@@ -1,0 +1,26 @@
+{
+  "name": "kanban-board-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seansylee/kanban-board-bot.git"
+  },
+  "author": "Sean Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seansylee/kanban-board-bot/issues"
+  },
+  "homepage": "https://github.com/seansylee/kanban-board-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
