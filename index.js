@@ -45,7 +45,7 @@ bot.on("message", async message => {
 
 
   //Help -- benji
-  if (cmd[1] == commandList[]) {console.log("Im here"); return message.channel.send(helpList(message));}
+  if (cmd[1] == commandList[2]) {console.log("Im here"); return message.channel.send(helpList(message));}
 
 
 
@@ -95,17 +95,17 @@ function helpList(message) {
   let Help = new Discord.RichEmbed()
     .setColor("#0074E7")
     .setTitle("List of Board Commands")
-    .addField(help.viewAll.command, help.all.desc)
-    .addField(help.backlog.command, help.viewBacklog.desc)
-    .addField(help.inprogress.command, help.inprogress.desc)
-    .addField(help.completed.command, help.completed.desc)
-    .addField(help.add.command, help.add.desc)
-    .addField(help.delete.command, help.delete.desc)
-    .addField(help.edit.command, help.edit.desc)
-    .addField(help.forward.command, help.forward.desc)
-    .addField(help.backward.command, help.backward.desc)
-    .addField(help.up.command, help.up.desc)
-    .addField(help.down.command, help.down.desc);
+    //.addField(help.viewAll.command, help.all.desc)
+    // .addField(help.backlog.command, help.viewBacklog.desc)
+    // .addField(help.inprogress.command, help.inprogress.desc)
+    // .addField(help.completed.command, help.completed.desc)
+    // .addField(help.add.command, help.add.desc)
+    // .addField(help.delete.command, help.delete.desc)
+    // .addField(help.edit.command, help.edit.desc)
+    // .addField(help.forward.command, help.forward.desc)
+    // .addField(help.backward.command, help.backward.desc)
+    // .addField(help.up.command, help.up.desc)
+    .addField(`${help.down.command}`, `${help.down.desc}`);
   return Help;
 }
 
