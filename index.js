@@ -3,7 +3,7 @@ const help = require('./util/commands.json');
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disabledEveryone: true});
-const prefix = botconfig.prefix; 
+const prefix = botconfig.prefix;
 
 // Fields
 var backlog = [];
@@ -21,7 +21,7 @@ bot.on("message", async message => {
   if(message.author.bot) return ;
   if(message.channel.type == "dm") return;
 
-  // Parse command, and check. 
+  // Parse command, and check.
   let commands = message.content.split(" -");
 
   let cmd = [];
@@ -30,13 +30,13 @@ bot.on("message", async message => {
   // what comes after.
   if(commands.length > 1)
     cmd[1] = commands[1].split(" ")[0];
-  
+
 
 
 
   let args = commands.slice(1);
 
-  //Error Handling.  
+  //Error Handling.
   if (!commandList.includes(cmd[1]) && cmd.length > 1){  console.log(cmd); return message.channel.send(errorHandle(message));}
   //Add
   if (cmd[1] == commandList[0]) {addToBacklog(message, commands[1])}
@@ -47,7 +47,7 @@ bot.on("message", async message => {
   //Help -- benji
   if (cmd[1] == commandList[]) {console.log("Im here"); return message.channel.send(helpList(message));}
 
-  
+
 
   //Remove
   if (cmd[1] == commandList[1]) {}
@@ -60,7 +60,7 @@ bot.on("message", async message => {
     let serverembed = new Discord.RichEmbed()
     .setDescription("Server Information")
     .setColor("#0074E7")
-    .addField("Testing Embed", 
+    .addField("Testing Embed",
       "```" + "" + "item" +
       "item 2"
       + "```")
@@ -85,7 +85,7 @@ function errorHandle(message) {
 
 function addToBacklog(message, item) {
   console.log("Here to add to backlog.");
-  var content = item.split("\"")[1]; 
+  var content = item.split("\"")[1];
   message.channel.send("` "+ content + " `" + " has been added to the Backlog!")
   backlog.push(content);
   console.log(backlog);
@@ -95,17 +95,17 @@ function helpList(message) {
   let Help = new Discord.RichEmbed()
     .setColor("#0074E7")
     .setTitle("List of Board Commands")
-    .addField(help.backlog.command, help.viewBacklog.description)
-    .addField(help.inprogress.command, help.inprogress.description)
-    .addField(help.completed.command, help.completed.description)
-    //.addField(help.all.command, help.all.description)
-    .addField(help.add.command, help.add.description)
-    .addField(help.delete.command, help.delete.description)
-    .addField(help.edit.command, help.edit.description)
-    .addField(help.forward.command, help.forward.description)
-    .addField(help.backward.command, help.backward.description)
-    .addField(help.up.command, help.up.description)
-    .addField(help.down.command, help.down.description);
+    .addField(help.viewAll.command, help.all.desc)
+    .addField(help.backlog.command, help.viewBacklog.desc)
+    .addField(help.inprogress.command, help.inprogress.desc)
+    .addField(help.completed.command, help.completed.desc)
+    .addField(help.add.command, help.add.desc)
+    .addField(help.delete.command, help.delete.desc)
+    .addField(help.edit.command, help.edit.desc)
+    .addField(help.forward.command, help.forward.desc)
+    .addField(help.backward.command, help.backward.desc)
+    .addField(help.up.command, help.up.desc)
+    .addField(help.down.command, help.down.desc);
   return Help;
 }
 
