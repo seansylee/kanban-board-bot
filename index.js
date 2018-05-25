@@ -31,9 +31,6 @@ bot.on("message", async message => {
   if(commands.length > 1)
     cmd[1] = commands[1].split(" ")[0];
 
-
-
-
   let args = commands.slice(1);
 
   //Error Handling.
@@ -42,11 +39,8 @@ bot.on("message", async message => {
   if (cmd[1] == commandList[0]) {addToBacklog(message, commands[1])}
 
 
-
-
   //Help -- benji
   if (cmd[1] == commandList[2]) {console.log("Im here"); return message.channel.send(helpList(message));}
-
 
 
   //Remove
