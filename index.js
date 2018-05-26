@@ -9,7 +9,7 @@ const prefix = botconfig.prefix;
 var backlog = [];
 var inProgress = [];;
 var complete= [];
-var commandList = ['add', 'remove', 'help', 'start', 'complete'];
+var commandList = ['add', 'remove', 'help', 'start', 'complete', 'clear'];
 
 // Signifies Launch
 bot.on("ready", async () =>{
@@ -42,7 +42,10 @@ bot.on("message", async message => {
   if (cmd[1] == commandList[3]) {startItem(message, commands[1])}
   //Move item from in-progress to complete.
   if (cmd[1] == commandList[4]) {completeItem(message, commands[1])}
-
+  //Move item into new index.
+  if (cmd[1] == commandList[5]) {clear(message)} 
+  // to be implemented.
+  // if (cmd[1] == commandList[5]) {up(message, commands[1])}clearclearclearclearclear
 
   //display board
   if (cmd[0] === `${prefix}kanbot` && commands.length == 1){
@@ -52,7 +55,7 @@ bot.on("message", async message => {
     .setColor("#0074E7")
     .addField("Project Backlog ",
       "```" + displayColumn(backlog) + "```")
-    .addField("In Progress.. ",
+    .addField("In Progress ",
     "```" + displayColumn(inProgress) + "```")
     .addField("Completed Tasks",
       "```" + displayColumn(complete) + "```")
@@ -148,5 +151,47 @@ function forward(item, from, to, message) {
     from.splice(content -1, 1);
   }
 }
+
+// To implement some time
+// function up(message, item, newIndex) {
+//   var sawItem = false;
+//   sawItem = searchList(item, newIndex, backlog)
+//             || searchList(item, newIndex, inProgress)
+//             || searchList(item, newIndex, complete);
+
+//   if (!sawItem) {
+//     message.channel.send({embed: {
+//       color: 3447003,
+//       description: "Task not found"
+//     }});
+//     return;
+//   }
+// }
+
+// function searchList(item, newIndex, list) {
+//   if (newIndex < list.length) {
+//     for (var i = 0; i < list.length; i++) {
+//       if (list[i] == item) {
+//         list.splice(newIndex, 0, item);
+//         list.pop();
+//         return true;
+//       }
+//     }
+//   }
+  
+//   return false;
+// }
+
+function clear(message) {
+  backlog = [];
+  inProgress = [];
+  complete = [];
+
+  message.channel.send({embed: {
+    color: 3447003,
+    description: "Board cleared by: " + message.member
+  }});
+}
+
 
 bot.login(botconfig.token);
