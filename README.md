@@ -1,6 +1,6 @@
 # Kanbot
 
-A lightweight Kanban board bot, for your Discord! <br /><br />
+:clipboard: A lightweight Kanban board bot, for your Discord! <br /><br />
 
 ![logo](https://media.discordapp.net/attachments/449647907772170253/449770623187812362/kanbotcircle.png)
 
@@ -29,10 +29,10 @@ Type the commands following `$kanbot` into your Discord chat box to launch the a
 | ------------- |:-------------:|
 | `$kanbot`| displays current kanban board|
 |||
-| `-add <"item"> | adds "item" into 'backlog'|
-| `-remove <"id"> | remove item with "id" from 'backlog'|
-| `-start <"id"> | move item with "id" from 'backlog' to 'in-progress'|
-| `-complete <"id"> | move item with "id" from 'in-progress' to 'backlog'|
+| `-add <"item">` | adds "item" into 'backlog'|
+| `-remove <"id">` | remove item with "id" from 'backlog'|
+| `-start <"id">` | move item with "id" from 'backlog' to 'in-progress'|
+| `-complete <"id">` | move item with "id" from 'in-progress' to 'backlog'|
 | `-clear` | clears the current board *use with caution*|
 
 ## Examples
