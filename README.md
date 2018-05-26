@@ -15,11 +15,11 @@ If you are not familiar with a kanban board [here](https://leankit.com/learn/kan
 
 clone this repository
 
-`$ git clone git@git:seansylee/kanban-board-bot.git`
+```$ git clone git@git:seansylee/kanban-board-bot.git```
 
 install the necessary node modules
 
-`$ npm install`
+```$ npm install```
 
 ## Documentation
 
@@ -29,7 +29,7 @@ Type the commands following `$kanbot` into your Discord chat box to launch the a
 | ------------- |:-------------:|
 | `$kanbot`| displays current kanban board|
 |||
-| `-help <"help">` | displays possible commans|
+| `-help <"help">` | displays possible commands |
 | `-add <"item">` | adds "item" into 'backlog'|
 | `-remove <"id">` | remove item with "id" from 'backlog'|
 | `-start <"id">` | move item with "id" from 'backlog' to 'in-progress'|
