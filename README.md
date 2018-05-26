@@ -1,6 +1,7 @@
-#Kanbot
+# Kanbot
 
-A lightweight Kanban board bot, for your Discord!<br />
+A lightweight Kanban board bot, for your Discord! <br /><br />
+
 ![logo](https://media.discordapp.net/attachments/449647907772170253/449770623187812362/kanbotcircle.png)
 
 ## Getting started 
