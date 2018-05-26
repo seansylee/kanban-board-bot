@@ -11,15 +11,15 @@
 		"command": "`$kanban -remove <Task>`",
 		"desc": "remove selected tasks"
 	},
-  "clear": {
+  "clearTask": {
     "command": "`$kanban -clear`",
     "desc": "clear the table of all tasks"
   },
-	"start": {
+	"startTask": {
 		"command": "`$kanban -start <Task>`",
 		"desc": "shift selected task from the backlog to the in-progress tasks"
 	},
-	"complete": {
+	"completeTask": {
 		"command": "`$kanban -complete <Task>`",
 		"desc": "shift selected task from in-progress to completed"
 	}

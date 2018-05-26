@@ -98,9 +98,9 @@ function helpList(message) {
     .addField(`${help.view.command}`, `${help.view.desc}`)
     .addField(`${help.add.command}`, `${help.add.desc}`)
     .addField(`${help.remove.command}`, `${help.remove.desc}`)
-    .addField(`${help.clear.command}`, `${help.clear.desc}`)
-    .addField(`${help.start.command}`, `${help.start.desc}`)
-    .addField(`${help.complete.command}`, `${help.complete.desc}`);
+    .addField(`${help.clearTask.command}`, `${help.clearTask.desc}`)
+    .addField(`${help.startTask.command}`, `${help.startTask.desc}`)
+    .addField(`${help.completeTask.command}`, `${help.completeTask.desc}`);
   return Help;
 }
 
