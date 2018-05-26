@@ -1,46 +1,26 @@
 {
-  "viewAll": {
-    "command": "`$kanban [-A]`",
+  "view": {
+    "command": "`$kanban`",
     "desc": "display the entire board"
   },
-  "backlog": {
-    "command": "`$kanban -B`",
-    "desc": "display the Backlog tasks"
-  },
-  "inprogress": {
-    "command": "`$kanban -I`",
-    "desc": "display the In-Progress tasks"
-  },
-  "completed": {
-    "command": "`$kanban -C`",
-    "desc": "display the Completed tasks"
-  },
 	"add": {
-		"command": "`$kanban add <Task>`",
+		"command": "`$kanban -add <Task>`",
 		"desc": "default, adding a task to bottom row of \"Backlog\""
 	},
-	"delete": {
-		"command": "`$kanban delete <Task>`",
-		"desc": "delete selected tasks"
+	"remove": {
+		"command": "`$kanban -remove <Task>`",
+		"desc": "remove selected tasks"
 	},
-	"edit": {
-		"command": "`$kanban edit <Task> <New Task>`",
-		"desc": "replace selected task with a new task"
+  "clear": {
+    "command": "`$kanban -clear`",
+    "desc": "clear the table of all tasks"
+  },
+	"start": {
+		"command": "`$kanban -start <Task>`",
+		"desc": "shift selected task from the backlog to the in-progress tasks"
 	},
-	"forward": {
-		"command": "`$kanban forward <Task>`",
-		"desc": "shift selected task forward, for example, from \"Backlog\" to \"In-Progress\""
-	},
-	"backward": {
-		"command": "`$kanban backward <Task>`",
-		"desc": "shift selected task backward, for example, from \"In-Progress\" to \"Backlog\""
-	},
-	"up": {
-		"command": "`$kanban up <Task>`",
-		"desc": "sup gurl u up?"
-	},
-	"down": {
-		"command": "`$kanban down <Task>`",
-		"desc": "shifting down an task (default shifts down by one)"
+	"complete": {
+		"command": "`$kanban -complete <Task>`",
+		"desc": "shift selected task from in-progress to completed"
 	}
 }

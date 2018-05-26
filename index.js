@@ -43,7 +43,7 @@ bot.on("message", async message => {
   //Move item from in-progress to complete.
   if (cmd[1] == commandList[4]) {completeItem(message, commands[1])}
   //Move item into new index.
-  if (cmd[1] == commandList[5]) {clear(message)} 
+  if (cmd[1] == commandList[5]) {clear(message)}
   // to be implemented.
   // if (cmd[1] == commandList[5]) {up(message, commands[1])}clearclearclearclearclear
 
@@ -95,19 +95,12 @@ function helpList(message) {
   let Help = new Discord.RichEmbed()
     .setColor("#0074E7")
     .setTitle("List of Board Commands")
-    .addField(`${help.viewAll.command}`, `${help.viewAll.desc}`)
-    .addField(`${help.backlog.command}`, `${help.backlog.desc}`)
-    .addField(`${help.inprogress.command}`, `${help.inprogress.desc}`)
-    .addField(`${help.completed.command}`, `${help.completed.desc}`)
+    .addField(`${help.view.command}`, `${help.view.desc}`)
     .addField(`${help.add.command}`, `${help.add.desc}`)
-    //needs to be remove.
-    .addField(`${help.delete.command}`, `${help.delete.desc}`)
-    // ^-- update
-    .addField(`${help.edit.command}`, `${help.edit.desc}`)
-    .addField(`${help.forward.command}`, `${help.forward.desc}`)
-    .addField(`${help.backward.command}`, `${help.backward.desc}`)
-    .addField(`${help.up.command}`, `${help.up.desc}`)
-    .addField(`${help.down.command}`, `${help.down.desc}`);
+    .addField(`${help.remove.command}`, `${help.remove.desc}`)
+    .addField(`${help.clear.command}`, `${help.clear.desc}`)
+    .addField(`${help.start.command}`, `${help.start.desc}`)
+    .addField(`${help.complete.command}`, `${help.complete.desc}`);
   return Help;
 }
 
@@ -115,7 +108,7 @@ function removeItem(message, item) {
   var content = item.split("\"")[1];
   var desc = ""
   if (backlog[content - 1]) {
-    desc = backlog[content-1].substring(0, backlog[content].lastIndexOf("\"") + 1) + "  removed by   " + message.member; 
+    desc = backlog[content-1].substring(0, backlog[content].lastIndexOf("\"") + 1) + "  removed by   " + message.member;
     backlog.splice(content - 1, 1);
   } else {
     desc = "Please enter a valid ID value.";
@@ -145,7 +138,7 @@ function forward(item, from, to, message) {
     }});
     var temp = from[content - 1];
     var member = message.member.displayName;
-    
+
     temp = temp.substring(0, temp.lastIndexOf("\"") + 1);
     to.push(temp + " added by: " + member);
     from.splice(content -1, 1);
@@ -178,7 +171,7 @@ function forward(item, from, to, message) {
 //       }
 //     }
 //   }
-  
+
 //   return false;
 // }
 
