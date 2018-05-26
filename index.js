@@ -6,11 +6,10 @@ const bot = new Discord.Client({disabledEveryone: true});
 const prefix = botconfig.prefix;
 
 // Fields
-var backlog = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5'];
-var inProgress;
-var complete;
-var commandList = ['add', 'remove', 'help'];
-var itemID = 1;
+var backlog = [];
+var inProgress = [];;
+var complete= [];
+var commandList = ['add', 'remove', 'help', 'start', 'complete'];
 
 // Signifies Launch
 bot.on("ready", async () =>{
@@ -32,49 +31,46 @@ bot.on("message", async message => {
   let args = commands.slice(1);
 
   //Error Handling.
-  if (!commandList.includes(cmd[1]) && cmd.length > 1){  console.log(cmd); return message.channel.send(errorHandle(message));}
-  //Add
+  if (!commandList.includes(cmd[1]) && cmd.length > 1){return message.channel.send(errorHandle(message));}
+  //Add add to Node.JS
   if (cmd[1] == commandList[0]) {addToBacklog(message, commands[1])}
-  //Help -- benji
-  if (cmd[1] == commandList[2]) {console.log("Im here"); return message.channel.send(helpList(message));}
-  //Remove
+  //Help (display list of commands)
+  if (cmd[1] == commandList[2]) {return message.channel.send(helpList(message));}
+  //Remove from Backlog.
   if (cmd[1] == commandList[1]) {removeItem(message, commands[1])}
+  //Move item from backlog to in-progress
+  if (cmd[1] == commandList[3]) {startItem(message, commands[1])}
+  //Move item from in-progress to complete.
+  if (cmd[1] == commandList[4]) {completeItem(message, commands[1])}
+
 
   //display board
-  if (cmd[0] === `${prefix}kanban` && commands.length == 1){
-    // console.log(commands.length + "is the size");
+  if (cmd[0] === `${prefix}kanbot` && commands.length == 1){
     console.log("I made it to server info");
-    //let sicon = message.guild.displayAvatarURL;
     let serverembed = new Discord.RichEmbed()
     .setDescription("Kanbot-Bot!")
     .setColor("#0074E7")
-    .addField("Project Backlog",
-      "```" +
-      displayBacklog()
-      + "```")
-    //.setThumbnail(sicon)
-    // .addField("Server Name", message.guild.name)
-    // .addField("Created On", message.guild.createdAt)
-    .addField("your ID: ", "I've been called by " + message.member );
-    //.addField("You joined", message.member.joinedAt)
-    //.addField("Total Members", message.guild.memberCount);
+    .addField("Project Backlog ",
+      "```" + displayColumn(backlog) + "```")
+    .addField("In Progress.. ",
+    "```" + displayColumn(inProgress) + "```")
+    .addField("Completed Tasks",
+      "```" + displayColumn(complete) + "```")
+   .addField("I've been called by ",  message.member );
     return message.channel.send(serverembed);
   }
 })
 
-function displayBacklog (){
+function displayColumn (from){
   var display = "";
-  console.log(backlog.length);
-  for(var i = 0; i < backlog.length; i++) {
-    display += (i + 1)+ " - "  + backlog[i] + "\n";
+  console.log(from.length);
+  for(var i = 0; i < from.length; i++) {
+    display += (i + 1)+ " - "  + from[i] + "\n";
   }
-  console.log("checkin some shit");
-  console.log(display);
   return display;
 }
 
 function errorHandle(message) {
-  console.log("Im here to handle errors");
   let errorHandle = new Discord.RichEmbed()
   .setColor('#800000')
   .addField("Please enter a valid Command!", "enter `" +" $kanban help"+ " `" + " for list of commands");
@@ -84,8 +80,11 @@ function errorHandle(message) {
 function addToBacklog(message, item) {
   console.log("Here to add to backlog.");
   var content = item.split("\"")[1];
-  message.channel.send("` "+ content + " `" + " has been added to the Backlog!")
-  backlog.push(content);
+  message.channel.send({embed: {
+    color: 3447003,
+    description:"` "+ content + " `" + " has been added to the Backlog by " + message.member
+  }});
+  backlog.push("\"" + content + "\"" + " added by: " + message.member.displayName);
   console.log(backlog);
 }
 
@@ -98,7 +97,9 @@ function helpList(message) {
     .addField(`${help.inprogress.command}`, `${help.inprogress.desc}`)
     .addField(`${help.completed.command}`, `${help.completed.desc}`)
     .addField(`${help.add.command}`, `${help.add.desc}`)
+    //needs to be remove.
     .addField(`${help.delete.command}`, `${help.delete.desc}`)
+    // ^-- update
     .addField(`${help.edit.command}`, `${help.edit.desc}`)
     .addField(`${help.forward.command}`, `${help.forward.desc}`)
     .addField(`${help.backward.command}`, `${help.backward.desc}`)
@@ -109,25 +110,43 @@ function helpList(message) {
 
 function removeItem(message, item) {
   var content = item.split("\"")[1];
-  var i;
-  if (content == null) {
-    message.channel.send({embed: {
-      color: 3447003,
-      description: "Needs more parameters."
-    }});
-    return;
+  var desc = ""
+  if (backlog[content - 1]) {
+    desc = backlog[content-1].substring(0, backlog[content].lastIndexOf("\"") + 1) + "  removed by   " + message.member; 
+    backlog.splice(content - 1, 1);
+  } else {
+    desc = "Please enter a valid ID value.";
   }
-  for (i = 0; i < backlog.length; i++) {
-    if (backlog[content - 1]) {
-      backlog.splice(content - 1, 1);
-      message.channel.send({embed: {
-        color: 3447003,
-        description: "Item ID #" + content + "  removed by   " + message.member
-      }});
-      return;
-    }
-  }
+  return message.channel.send({embed: {
+    color: 3447003,
+    description: desc
+  }});
 }
 
+function startItem(message, item) {
+  forward(item, backlog, inProgress, message);
+  console.log("inprogress = "+ inProgress);
+}
+
+function completeItem(message, item) {
+  forward(item, inProgress, complete, message);
+  console.log("complete = "+ complete);
+}
+
+function forward(item, from, to, message) {
+  var content = item.split("\"")[1];
+  if (from[content - 1]) {
+    message.channel.send({embed: {
+      color: 3447003,
+      description: "`" + from[content-1]+ "`" + " Moved by : "+ message.member.toString()
+    }});
+    var temp = from[content - 1];
+    var member = message.member.displayName;
+    
+    temp = temp.substring(0, temp.lastIndexOf("\"") + 1);
+    to.push(temp + " added by: " + member);
+    from.splice(content -1, 1);
+  }
+}
 
 bot.login(botconfig.token);
