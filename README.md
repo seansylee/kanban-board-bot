@@ -29,7 +29,7 @@ Type the commands following `$kanbot` into your Discord chat box to launch the a
 | ------------- |:-------------:|
 | `$kanbot`| displays current kanban board|
 |||
-| `-help <"help">` | displays possible commands |
+| `-help` | displays possible commands |
 | `-add <"item">` | adds "item" into 'backlog'|
 | `-remove <"id">` | remove item with "id" from 'backlog'|
 | `-start <"id">` | move item with "id" from 'backlog' to 'in-progress'|
@@ -38,10 +38,10 @@ Type the commands following `$kanbot` into your Discord chat box to launch the a
 
 ## Examples
 
-`$kanbot` to display the board <br />
-![board](https://i.imgur.com/KkAgFms.png)<br />
+`$kanbot` to display the board <br /><br />
+![board](https://i.imgur.com/KkAgFms.png)<br /><br />
 
-`$kanbot -add "Enjoy cookies"` to add to the backlog <br />
+`$kanbot -add "Enjoy cookies"` to add to the backlog <br /><br />
 ![add-to-board](https://i.imgur.com/D7VfZDI.png)<br />
 
 Made with :heart:

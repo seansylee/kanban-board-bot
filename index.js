@@ -13,7 +13,7 @@ var commandList = ['add', 'remove', 'help', 'start', 'complete', 'clear'];
 
 // Signifies Launch
 bot.on("ready", async () =>{
-  console.log(`${bot.user.username} is online! Time to get shit done!`);
+  console.log(`${bot.user.username} is online! `);
 });
 
 bot.on("message", async message => {
