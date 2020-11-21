@@ -25,6 +25,14 @@ install the necessary node modules
 $ npm install
 ```
 
+create a bot through the discord developer portal and add your token in a file labeled `botconfig.json`
+
+start the server!
+
+```
+$ npm run watch
+```
+
 ## Documentation
 
 Type the commands following `$kanbot` into your Discord chat box to launch the app.

@@ -1,8 +1,8 @@
 {
-  "view": {
-    "command": "`$kanban`",
-    "desc": "display the entire board"
-  },
+	"view": {
+		"command": "`$kanban`",
+		"desc": "display the entire board"
+	},
 	"add": {
 		"command": "`$kanban -add <Task>`",
 		"desc": "default, adding a task to bottom row of \"Backlog\""
@@ -11,10 +11,10 @@
 		"command": "`$kanban -remove <Task>`",
 		"desc": "remove selected tasks"
 	},
-  "clearTask": {
-    "command": "`$kanban -clear`",
-    "desc": "clear the table of all tasks"
-  },
+	"clearTask": {
+		"command": "`$kanban -clear`",
+		"desc": "clear the table of all tasks"
+	},
 	"startTask": {
 		"command": "`$kanban -start <Task>`",
 		"desc": "shift selected task from the backlog to the in-progress tasks"

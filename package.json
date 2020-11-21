@@ -1,11 +1,11 @@
 {
   "name": "kanban-board-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A bot for a lightweight kanban board",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon index.js"
+    "watch": "nodemon index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,15 @@
   },
   "homepage": "https://github.com/seansylee/kanban-board-bot#readme",
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "aws-sdk": "^2.797.0",
+    "discord.js": "^11.3.2",
+    "ts-lint": "^4.5.1"
   },
   "devDependencies": {
-    "nodemon": "^1.17.5"
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.9",
+    "lodash": "^4.17.20",
+    "nodemon": "^1.19.4",
+    "typescript": "^4.1.2"
   }
 }
