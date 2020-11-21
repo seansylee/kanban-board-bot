@@ -101,10 +101,10 @@ function addToBacklog(message: Discord.Message, item: string) {
     message.channel.send({
         embed: {
             color: 3447003,
-            description:`${content} has been added to the Backlog by ${message.member}`
+            description:`${content} has been added to the Backlog by ${message.author.username}`
         }
     });
-    backlog.push(`"${content}" added by: ${message.member.displayName}`);
+    backlog.push(`"${content}" added by: ${message.author.username}`);
     console.log(backlog);
 }
 
@@ -155,11 +155,11 @@ function forward(item: string, from: string[], to: string[], message: Discord.Me
         message.channel.send({
             embed: {
                 color: 3447003,
-                description:`${from[content - 1]} Moved by: ${message.member.toString()}`
+                description:`${from[content - 1]} Moved by: ${message.author.username}`
             }
         });
         let temp = from[content - 1];
-        const member = message.member.displayName;
+        const member = message.author.username;
 
         temp = temp.substring(0, temp.lastIndexOf('"') + 1);
         to.push(`${temp} added by: ${member}`);
