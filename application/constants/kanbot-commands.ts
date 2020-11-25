@@ -40,9 +40,10 @@ export class KanbotRequest implements KanbotRequest {
     }
 
     public static parseString(input: string): KanbotRequest {
-        const request: string[] = input.split(' ');
-        const command: KanbotCommands = getKanbotCommand(request[0]);
-        const taskName: string = `${trim(request[1], '"')}`;
+        // split on first space - won't work if we allow commands to have multiple arguments
+        const spaceIndex: number = input.indexOf(' ');
+        const command: KanbotCommands = getKanbotCommand(input.substring(0, spaceIndex));
+        const taskName: string = `${trim(input.substring(spaceIndex + 1, input.length), '"')}`;
 
         return new KanbotRequest(command, taskName);
     }
