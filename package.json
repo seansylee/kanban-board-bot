@@ -20,7 +20,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.165",
     "@types/node": "^14.14.9",
-    "aws-sdk": "^2.797.0",
+    "aws-sdk": "^2.814.0",
     "discord.js": "^11.3.2",
     "lodash": "^4.17.20",
     "nodemon": "^1.19.4",
